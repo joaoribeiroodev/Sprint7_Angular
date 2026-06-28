@@ -25,13 +25,30 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!(sessionStorage.getItem(this.storageKey) || localStorage.getItem(this.storageKey));
+    return this.getUsuario() !== null;
   }
 
   getUsuario(): Usuario | null {
-    const usuario =
+    const raw =
       sessionStorage.getItem(this.storageKey) || localStorage.getItem(this.storageKey);
-    return usuario ? JSON.parse(usuario) : null;
+
+    if (!raw) {
+      return null;
+    }
+
+    try {
+      const usuario = JSON.parse(raw) as Usuario;
+
+      if (!usuario?.nome) {
+        this.logout();
+        return null;
+      }
+
+      return usuario;
+    } catch {
+      this.logout();
+      return null;
+    }
   }
 
   temSessaoPersistida(): boolean {
