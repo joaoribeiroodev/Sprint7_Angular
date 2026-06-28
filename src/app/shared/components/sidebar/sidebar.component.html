@@ -1,0 +1,12 @@
+<aside class="sidebar" [class.open]="isOpen">
+  <div class="sidebar-logo">
+    <img src="assets/img/ford.png" alt="Ford" />
+  </div>
+
+  <nav class="sidebar-nav">
+    <a routerLink="/home" routerLinkActive="active" class="sidebar-link">Home</a>
+    <a routerLink="/dashboard" routerLinkActive="active" class="sidebar-link">Dashboard</a>
+  </nav>
+</aside>
+
+<div class="sidebar-backdrop" *ngIf="exibirBackdrop" (click)="onBackdropClick()"></div>

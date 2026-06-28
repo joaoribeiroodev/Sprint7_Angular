@@ -1,1 +1,121 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --ford-blue: #0b4da2;
+  --ford-blue-dark: #083b7d;
+  --ford-green: #6aaf3a;
+  --ford-green-dark: #5a9632;
+  --ford-welcome-blue: #5b9bd5;
+  --ford-grey: #9e9e9e;
+  --ford-border: #d9d9d9;
+  --ford-card-header: #f3f3f3;
+  --sidebar-width: 220px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+.ford-card {
+  border: 1px solid var(--ford-border);
+  background: #fff;
+}
+
+.ford-card-header {
+  background: var(--ford-card-header);
+  border-bottom: 1px solid var(--ford-border);
+  color: #666;
+  font-size: 0.95rem;
+  padding: 0.65rem 1rem;
+  text-align: center;
+}
+
+.ford-card-body {
+  padding: 1.25rem 1rem;
+}
+
+.ford-metric-value {
+  color: var(--ford-blue);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+}
+
+.ford-metric-unit {
+  color: var(--ford-blue);
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+}
+
+.ford-table thead th {
+  background: var(--ford-blue);
+  border-color: var(--ford-blue);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ford-table tbody td {
+  border-color: var(--ford-border);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ford-table tfoot td.ford-table-footer {
+  background: var(--ford-blue);
+  border-color: var(--ford-blue);
+  height: 1rem;
+  padding: 0;
+}
+
+.ford-table .vin-input:focus {
+  border-color: var(--ford-blue);
+  box-shadow: none;
+  outline: none;
+}
+
+.vin-input {
+  border: 1px solid var(--ford-border);
+  border-radius: 0;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0.45rem 0.65rem;
+  text-align: center;
+  width: 100%;
+}
+
+.vin-input:focus {
+  border-color: var(--ford-blue);
+  box-shadow: none;
+  outline: none;
+}
+
+.menu-toggle {
+  background: transparent;
+  border: 0;
+  color: var(--ford-green);
+  cursor: pointer;
+  font-size: 1.75rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.menu-toggle:hover {
+  color: var(--ford-green-dark);
+}

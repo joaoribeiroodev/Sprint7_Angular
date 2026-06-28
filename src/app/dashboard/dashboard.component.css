@@ -1,0 +1,187 @@
+.dashboard-page {
+  background: #fff;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto 1fr auto;
+  padding: 1rem 1.5rem 0.5rem;
+}
+
+.dashboard-title {
+  color: var(--ford-blue);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-menu-toggle {
+  background: transparent;
+  border: 0;
+  color: #888;
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.user-dropdown {
+  background: #fff;
+  border: 1px solid var(--ford-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  min-width: 140px;
+  padding: 0.75rem 1rem;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  z-index: 20;
+}
+
+.user-info {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-avatar {
+  color: #888;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.user-name {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.user-logout {
+  background: transparent;
+  border: 0;
+  color: var(--ford-green);
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0;
+}
+
+.user-logout:hover {
+  text-decoration: underline;
+}
+
+.dashboard-content {
+  padding: 1rem 1.5rem 2rem;
+}
+
+.metrics-row .ford-card {
+  min-height: 140px;
+}
+
+.vehicle-select {
+  border-color: var(--ford-border);
+  border-radius: 0;
+  font-size: 0.95rem;
+}
+
+.vehicle-select:focus {
+  border-color: var(--ford-blue);
+  box-shadow: none;
+}
+
+.vehicle-showcase {
+  text-align: center;
+}
+
+.vehicle-image {
+  max-height: 340px;
+  object-fit: contain;
+}
+
+.ford-table-wrapper {
+  margin-top: 1rem;
+}
+
+.vin-search-mobile {
+  display: none;
+}
+
+.ford-table-footer-mobile-row {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .dashboard-content {
+    padding: 1rem 0.75rem 2rem;
+  }
+
+  .vin-search-mobile {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .vin-search-label {
+    background: var(--ford-blue);
+    color: #fff;
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.55rem 0.75rem;
+    text-align: center;
+  }
+
+  .vin-search-mobile .vin-input {
+    border-top: 0;
+    font-size: 0.875rem;
+    width: 100%;
+  }
+
+  .vin-column-desktop {
+    display: none;
+  }
+
+  .ford-table-footer-desktop {
+    display: none;
+  }
+
+  .ford-table-footer-mobile-row {
+    display: table-row;
+  }
+
+  .ford-table thead th {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.35rem;
+    white-space: nowrap;
+  }
+
+  .ford-table tbody td {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.35rem;
+  }
+
+  .ford-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-header {
+    grid-template-columns: auto 1fr;
+  }
+
+  .dashboard-title {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+
+  .user-menu {
+    justify-self: end;
+  }
+}

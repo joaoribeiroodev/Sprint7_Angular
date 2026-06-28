@@ -1,0 +1,154 @@
+<div class="dashboard-page">
+  <app-sidebar [isOpen]="menuAberto" (closeMenu)="fecharMenu()"></app-sidebar>
+
+  <header class="dashboard-header">
+    <button type="button" class="menu-toggle" (click)="toggleMenu()" aria-label="Menu">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <h1 class="dashboard-title">Dashboard FORD</h1>
+
+    <div class="user-menu" appStopPropagation>
+      <button type="button" class="user-menu-toggle" (click)="toggleMenuUsuario()" aria-label="Usuário">
+        <i class="bi bi-person-circle"></i>
+      </button>
+
+      <div class="user-dropdown" *ngIf="exibirMenuUsuario">
+        <div class="user-info">
+          <i class="bi bi-person-circle user-avatar"></i>
+          <span class="user-name">{{ nomeUsuario }}</span>
+        </div>
+        <button type="button" class="user-logout" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-content container-fluid">
+    <div class="row g-3 mb-4 metrics-row" *ngIf="exibirMetricas">
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="ford-card h-100">
+          <div class="ford-card-header">Veículo</div>
+          <div class="ford-card-body">
+            <select
+              class="form-select vehicle-select"
+              [(ngModel)]="veiculoSelecionadoId"
+              *ngIf="exibirSelectVeiculos"
+            >
+              <option *ngFor="let veiculo of veiculosFiltrados" [ngValue]="veiculo.id">
+                {{ veiculo.vehicle }}
+              </option>
+            </select>
+            <p class="text-muted small mb-0" *ngIf="exibirNenhumModelo">
+              Nenhum modelo encontrado.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3" *ngIf="exibirVeiculoSelecionado">
+        <div class="ford-card h-100">
+          <div class="ford-card-header">Total de Vendas</div>
+          <div class="ford-card-body text-center">
+            <p class="ford-metric-value">{{ totalVendasExibicao }}</p>
+            <div class="ford-metric-unit">Unid.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3" *ngIf="exibirVeiculoSelecionado">
+        <div class="ford-card h-100">
+          <div class="ford-card-header">Conectados</div>
+          <div class="ford-card-body text-center">
+            <p class="ford-metric-value">{{ conectadosExibicao }}</p>
+            <div class="ford-metric-unit">Unid.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3" *ngIf="exibirVeiculoSelecionado">
+        <div class="ford-card h-100">
+          <div class="ford-card-header">Update Software</div>
+          <div class="ford-card-body text-center">
+            <p class="ford-metric-value">{{ softwareUpdatesExibicao }}</p>
+            <div class="ford-metric-unit">Unid.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="exibirCarregandoVeiculos" class="text-center text-muted py-4">
+      Carregando veículos...
+    </div>
+
+    <div class="vehicle-showcase mb-4" *ngIf="exibirVeiculoSelecionado">
+      <img class="vehicle-image img-fluid" src="{{ urlImagemVeiculo }}" alt="{{ altImagemVeiculo }}" />
+    </div>
+
+    <div class="vin-search-mobile">
+      <span class="vin-search-label">Código - Vin</span>
+      <input
+        type="text"
+        name="codigoVinMobile"
+        class="vin-input"
+        placeholder="2FRHDUYS2Y63NHD22454"
+        [(ngModel)]="codigoVin"
+      />
+    </div>
+
+    <div class="table-responsive ford-table-wrapper">
+      <table class="table ford-table mb-0">
+        <thead>
+          <tr>
+            <th class="vin-column-desktop">Código - Vin</th>
+            <th>Odômetro</th>
+            <th>Nível de Combustível</th>
+            <th>Status</th>
+            <th>Lat.</th>
+            <th>Long.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="vin-column-desktop">
+              <input
+                type="text"
+                name="codigoVinDesktop"
+                class="vin-input"
+                placeholder="2FRHDUYS2Y63NHD22454"
+                [(ngModel)]="codigoVin"
+              />
+            </td>
+            <td>
+              <span *ngIf="exibirDadosVeiculo">{{ odometroExibicao }}</span>
+              <span *ngIf="exibirCarregandoVin">...</span>
+            </td>
+            <td>
+              <span *ngIf="exibirDadosVeiculo">{{ combustivelExibicao }}</span>
+            </td>
+            <td>
+              <span *ngIf="exibirDadosVeiculo">{{ statusExibicao }}</span>
+            </td>
+            <td>
+              <span *ngIf="exibirDadosVeiculo">{{ latitudeExibicao }}</span>
+            </td>
+            <td>
+              <span *ngIf="exibirDadosVeiculo">{{ longitudeExibicao }}</span>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6" class="ford-table-footer ford-table-footer-desktop"></td>
+          </tr>
+          <tr class="ford-table-footer-mobile-row">
+            <td colspan="5" class="ford-table-footer"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div *ngIf="exibirErroVin" class="alert alert-danger mt-3 py-2">
+      {{ mensagemErroVin }}
+    </div>
+  </main>
+</div>

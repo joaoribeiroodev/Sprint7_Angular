@@ -1,0 +1,52 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, tap } from 'rxjs';
+
+import { API_URL } from '../constants/api.constants';
+import { LoginRequest, Usuario } from '../models/usuario.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  private readonly storageKey = 'usuarioLogado';
+
+  constructor(private readonly http: HttpClient) {}
+
+  login(credentials: LoginRequest, persistir = false): Observable<Usuario> {
+    return this.http.post<Usuario>(`${API_URL}/login`, credentials).pipe(
+      tap((usuario) => this.setUsuario(usuario, persistir))
+    );
+  }
+
+  logout(): void {
+    sessionStorage.removeItem(this.storageKey);
+    localStorage.removeItem(this.storageKey);
+  }
+
+  isAuthenticated(): boolean {
+    return !!(sessionStorage.getItem(this.storageKey) || localStorage.getItem(this.storageKey));
+  }
+
+  getUsuario(): Usuario | null {
+    const usuario =
+      sessionStorage.getItem(this.storageKey) || localStorage.getItem(this.storageKey);
+    return usuario ? JSON.parse(usuario) : null;
+  }
+
+  temSessaoPersistida(): boolean {
+    return !!localStorage.getItem(this.storageKey);
+  }
+
+  private setUsuario(usuario: Usuario, persistir: boolean): void {
+    sessionStorage.removeItem(this.storageKey);
+    localStorage.removeItem(this.storageKey);
+
+    if (persistir) {
+      localStorage.setItem(this.storageKey, JSON.stringify(usuario));
+      return;
+    }
+
+    sessionStorage.setItem(this.storageKey, JSON.stringify(usuario));
+  }
+}

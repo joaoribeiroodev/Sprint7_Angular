@@ -1,0 +1,84 @@
+<div class="login-page">
+  <div class="login-image-panel">
+    <img src="assets/img/ranger.png" alt="Ford Ranger" class="login-vehicle-image" />
+  </div>
+
+  <div class="login-form-panel">
+    <div class="login-form-content">
+      <div class="text-center mb-4">
+        <img src="assets/img/ford.png" alt="Ford" class="login-logo" />
+        <h1 class="login-welcome">Boas-vindas</h1>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="input-group-ford mb-3">
+          <span class="input-icon"><i class="bi bi-person"></i></span>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            class="form-control ford-input"
+            [(ngModel)]="nome"
+            placeholder="Insira seu e-mail"
+            required
+          />
+          <span class="info-icon"><i class="bi bi-info-circle"></i></span>
+        </div>
+
+        <div class="input-group-ford mb-3">
+          <span class="input-icon"><i class="bi bi-lock"></i></span>
+          <input
+            type="password"
+            id="senha"
+            name="senha"
+            class="form-control ford-input"
+            [(ngModel)]="senha"
+            placeholder="Insira sua senha"
+            required
+            *ngIf="exibirCampoSenhaOculta"
+          />
+          <input
+            type="text"
+            id="senha-visivel"
+            name="senha"
+            class="form-control ford-input"
+            [(ngModel)]="senha"
+            placeholder="Insira sua senha"
+            required
+            *ngIf="exibirCampoSenhaVisivel"
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="alternarVisibilidadeSenha()"
+            aria-label="Mostrar senha"
+          >
+            <i class="bi bi-eye-slash" *ngIf="exibirIconeSenhaOculta"></i>
+            <i class="bi bi-eye" *ngIf="exibirIconeSenhaVisivel"></i>
+          </button>
+        </div>
+
+        <div class="auto-login-row mb-4">
+          <span>Logar automaticamente</span>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="logarAutomaticamente" name="autoLogin" />
+            <span class="slider"></span>
+          </label>
+          <span class="info-icon-inline"><i class="bi bi-info-circle"></i></span>
+        </div>
+
+        <div *ngIf="exibirMensagemErro" class="alert alert-danger py-2" role="alert">
+          {{ mensagemErro }}
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-login w-100"
+          [disabled]="botaoEntrarDesabilitado"
+        >
+          Entrar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

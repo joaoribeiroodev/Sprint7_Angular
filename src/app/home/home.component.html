@@ -1,0 +1,35 @@
+<div class="home-page">
+  <app-sidebar [isOpen]="menuAberto" (closeMenu)="fecharMenu()"></app-sidebar>
+
+  <header class="page-header">
+    <button type="button" class="menu-toggle" (click)="toggleMenu()" aria-label="Menu">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="user-menu" appStopPropagation>
+      <button type="button" class="user-menu-toggle" (click)="toggleMenuUsuario()" aria-label="Usuário">
+        <i class="bi bi-person-circle"></i>
+      </button>
+
+      <div class="user-dropdown" *ngIf="exibirMenuUsuario">
+        <div class="user-info">
+          <i class="bi bi-person-circle user-avatar"></i>
+          <span class="user-name">{{ nomeUsuario }}</span>
+        </div>
+        <button type="button" class="user-logout" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="home-content" [class.menu-open]="menuAberto">
+    <div class="home-background">
+      <img src="assets/img/ranger.png" alt="Ford Ranger" class="home-background-image" />
+      <div class="home-background-overlay"></div>
+    </div>
+
+    <div class="welcome-card">
+      <span class="welcome-label">Sistema de dados FORD</span>
+      <h1 class="welcome-title">Seja bem vindo(a)!</h1>
+    </div>
+  </main>
+</div>

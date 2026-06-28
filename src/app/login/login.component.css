@@ -1,0 +1,173 @@
+.login-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.login-image-panel,
+.login-form-panel {
+  flex: 1;
+  min-height: 100vh;
+}
+
+.login-image-panel {
+  align-items: center;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-vehicle-image {
+  max-height: 420px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.login-form-panel {
+  align-items: center;
+  background: #ccc3c321;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-form-content {
+  max-width: 360px;
+  width: 100%;
+}
+
+.login-logo {
+  max-width: 88px;
+}
+
+.login-welcome {
+  color: var(--ford-green);
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.input-group-ford {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.ford-input {
+  border: 1px solid #333;
+  border-radius: 0;
+  flex: 1;
+  font-size: 0.95rem;
+  padding: 0.65rem 0.75rem;
+}
+
+.ford-input:focus {
+  border-color: var(--ford-blue);
+  box-shadow: none;
+}
+
+.input-icon {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.info-icon,
+.info-icon-inline {
+  color: var(--ford-green);
+  font-size: 1rem;
+}
+
+.toggle-password {
+  background: transparent;
+  border: 0;
+  color: #888;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0;
+}
+
+.auto-login-row {
+  align-items: center;
+  color: #666;
+  display: flex;
+  font-size: 0.9rem;
+  gap: 0.75rem;
+}
+
+.switch {
+  display: inline-block;
+  height: 22px;
+  position: relative;
+  width: 42px;
+}
+
+.switch input {
+  height: 0;
+  opacity: 0;
+  width: 0;
+}
+
+.slider {
+  background-color: #ccc;
+  border-radius: 22px;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.2s;
+}
+
+.slider:before {
+  background-color: #fff;
+  border-radius: 50%;
+  bottom: 3px;
+  content: '';
+  height: 16px;
+  left: 3px;
+  position: absolute;
+  transition: 0.2s;
+  width: 16px;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--ford-green);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.btn-login {
+  background: var(--ford-grey);
+  border: 0;
+  border-radius: 0;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.75rem;
+}
+
+.btn-login:hover:not(:disabled) {
+  background: #888;
+  color: #fff;
+}
+
+.btn-login:disabled {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-image-panel {
+    min-height: 240px;
+  }
+
+  .login-vehicle-image {
+    max-height: 200px;
+  }
+}
