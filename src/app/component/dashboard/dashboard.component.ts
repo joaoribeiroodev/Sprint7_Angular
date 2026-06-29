@@ -11,10 +11,10 @@ import {
   takeUntil
 } from 'rxjs/operators';
 
-import { Veiculo, VeiculoData } from '../models/veiculo.model';
-import { Usuario } from '../models/usuario.model';
-import { AuthService } from '../services/auth.service';
-import { VehicleService } from '../services/vehicle.service';
+import { Veiculo, VeiculoData } from '../../model/veiculo.model';
+import { Usuario } from '../../model/usuario.model';
+import { AuthService } from '../../service/auth.service';
+import { VehicleService } from '../../service/vehicle.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -78,6 +78,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   fecharMenuUsuario(): void {
     this.menuUsuarioAberto = false;
+  }
+
+  pararPropagacao(event: Event): void {
+    event.stopPropagation();
   }
 
   logout(): void {

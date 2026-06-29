@@ -8,7 +8,7 @@
 
     <h1 class="dashboard-title">Dashboard FORD</h1>
 
-    <div class="user-menu" appStopPropagation>
+    <div class="user-menu" (click)="pararPropagacao($event)">
       <button type="button" class="user-menu-toggle" (click)="toggleMenuUsuario()" aria-label="Usuário">
         <i class="bi bi-person-circle"></i>
       </button>

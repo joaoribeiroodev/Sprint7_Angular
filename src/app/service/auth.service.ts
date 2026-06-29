@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
-import { API_URL } from '../constants/api.constants';
-import { LoginRequest, Usuario } from '../models/usuario.model';
+import { API_URL } from '../constant/api.constants';
+import { LoginRequest, Usuario } from '../model/usuario.model';
 
 @Injectable({
   providedIn: 'root'

@@ -4,10 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { HomeModule } from './home/home.module';
-import { LoginModule } from './login/login.module';
-import { SharedModule } from './shared/shared.module';
+import { DashboardModule } from './module/dashboard.module';
+import { HomeModule } from './module/home.module';
+import { LoginModule } from './module/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +14,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    SharedModule,
     LoginModule,
     HomeModule,
     DashboardModule

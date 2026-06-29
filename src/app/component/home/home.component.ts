@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../services/auth.service';
-import { Usuario } from '../models/usuario.model';
+import { AuthService } from '../../service/auth.service';
+import { Usuario } from '../../model/usuario.model';
 
 @Component({
   selector: 'app-home',
@@ -43,6 +43,10 @@ export class HomeComponent implements OnInit {
 
   fecharMenuUsuario(): void {
     this.menuUsuarioAberto = false;
+  }
+
+  pararPropagacao(event: Event): void {
+    event.stopPropagation();
   }
 
   logout(): void {

@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { API_URL } from '../constants/api.constants';
-import { Veiculo, VeiculoData, VeiculosAPI } from '../models/veiculo.model';
+import { API_URL } from '../constant/api.constants';
+import { Veiculo, VeiculoData, VeiculosAPI } from '../model/veiculo.model';
 
 @Injectable({
   providedIn: 'root'

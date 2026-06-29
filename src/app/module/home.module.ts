@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../shared/shared.module';
-import { HomeComponent } from './home.component';
+import { HomeComponent } from '../component/home/home.component';
+import { SidebarModule } from './sidebar.module';
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule, RouterModule, SharedModule],
+  imports: [CommonModule, RouterModule, SidebarModule],
   exports: [HomeComponent]
 })
 export class HomeModule {}
