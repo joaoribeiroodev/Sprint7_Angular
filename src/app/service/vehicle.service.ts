@@ -13,7 +13,7 @@ export class VehicleService {
   constructor(private readonly http: HttpClient) {}
 
   getVehicles(): Observable<Veiculo[]> {
-    return this.http.get<VeiculosAPI>(`${API_URL}/vehicle`).pipe(
+    return this.http.get<VeiculosAPI>(`${API_URL}/vehicles`).pipe(
       map((response) => response.vehicles)
     );
   }
