@@ -10,6 +10,7 @@ import { LoginRequest, Usuario } from '../model/usuario.model';
 })
 export class AuthService {
   private readonly storageKey = 'usuarioLogado';
+  private readonly autoLoginKey = 'logarAutomaticamente';
 
   constructor(private readonly http: HttpClient) {}
 
@@ -22,6 +23,7 @@ export class AuthService {
   logout(): void {
     sessionStorage.removeItem(this.storageKey);
     localStorage.removeItem(this.storageKey);
+    localStorage.removeItem(this.autoLoginKey);
   }
 
   isAuthenticated(): boolean {
@@ -52,14 +54,16 @@ export class AuthService {
   }
 
   temSessaoPersistida(): boolean {
-    return !!localStorage.getItem(this.storageKey);
+    return localStorage.getItem(this.autoLoginKey) === 'true';
   }
 
   private setUsuario(usuario: Usuario, persistir: boolean): void {
     sessionStorage.removeItem(this.storageKey);
     localStorage.removeItem(this.storageKey);
+    localStorage.removeItem(this.autoLoginKey);
 
     if (persistir) {
+      localStorage.setItem(this.autoLoginKey, 'true');
       localStorage.setItem(this.storageKey, JSON.stringify(usuario));
       return;
     }
